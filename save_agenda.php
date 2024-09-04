@@ -4,17 +4,25 @@ $date=$_POST["date"];
 $matiere=$_POST["matiere"];
 $contenu=$_POST["contenu"];
 $date2=$_POST["date2"];
-if ($date>=$date2):
+require 'autoloader.php';
+require 'Matiere.php';
+Autoloader::register();
+Matiere::from($matierefrompost); 
+// var_dump($date,$matiere,$contenu,$date2);
+if ($date>=$date2){
     header("./index.php");
-elseif ($matiere=="français"or"anglais"or"espagnol"or"nsi"or"histoire"or"géo"or"math"or"physique"or"chimie"or"ensc"):
+}
+elseif ($matiere!=$matierefrompost){
     header("./index.php");
-else:
+}
+else{
     $sql = $conn->prepare("INSERT INTO agenda (date, matiere, contenu, date2) VALUES ('$date', '$matiere', '$contenu','$date2')");
     $sql->execute();
     if ($sql->execute() === TRUE) {
-        echo "Votre joueur a bien été inséré dans le tableau.";
+        echo "Votre devoir a bien été inséré dans le tableau.";
     } else {
         echo "Erreur : " . $sql->error;
     }
     $sql->close();
     $conn->close();
+}

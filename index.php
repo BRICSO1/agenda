@@ -7,7 +7,7 @@ include("./connexion.php");
 
 <head>
     <title><?php echo $title; ?></title>
-    <link href="./sytle.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
 </head>
 
 <body>
