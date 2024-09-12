@@ -7,12 +7,12 @@ $date2=$_POST["date2"];
 require 'autoloader.php';
 require 'Matiere.php';
 Autoloader::register();
-Matiere::from($matierefrompost); 
+Matiere::from($matiere); 
 // var_dump($date,$matiere,$contenu,$date2);
 if ($date>=$date2){
     header("./index.php");
 }
-elseif ($matiere!=$matierefrompost){
+elseif ($matiere!=Matiere){
     header("./index.php");
 }
 else{
